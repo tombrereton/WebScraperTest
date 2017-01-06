@@ -2,13 +2,18 @@ import bs4 as bs
 import requests
 import string
 
-starting_url = "https://gocardless.com/"
+starting_url = "https://gocardless.com"
 
 
 def handle_local_links(url, link):
     if link.startswith('/'):
         return ''.join([url, link])
     else:
+        return link
+
+
+def check_sub_domain(url, link):
+    if link.startswith(url):
         return link
 
 
@@ -23,8 +28,11 @@ def get_links(url):
         soup = bs.BeautifulSoup(resp.text, 'lxml')
         body = soup.body
         links = [link.get('href') for link in body.find_all('a')]
+        links = filter(None, links)
         links = [handle_local_links(url, link) for link in links]
-        links = [str(link.encode("ascii")) for link in links]
+        links = [check_sub_domain(url, link) for link in links]
+        links = filter(None, links)
+        #links = [str(link.encode("ascii")) for link in links]
         return links
     except TypeError as e:
         print(e)
@@ -43,8 +51,10 @@ def main():
     how_many = 1
     parse_us = [starting_url]
 
-    data = get_links(link for link in parse_us)
-    data = [url for url_list in data for url in url_list]
+    for i in range(5):
+        data = [get_links(link) for link in parse_us]
+        data = [url for url_list in data for url in url_list]
+        parse_us = data
 
     with open('url.txt','w') as f:
         f.write(str(data))
