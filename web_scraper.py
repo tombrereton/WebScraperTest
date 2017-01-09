@@ -1,6 +1,7 @@
 import bs4 as bs
 import requests
 import json
+import collections
 
 
 
@@ -78,21 +79,28 @@ def main():
     parse_us = [starting_url]
     total_data = parse_us
     links = []
+    asset_list = []
     debug_counter = 0
     link_asset_tree = {}
 
-    while len(parse_us) != 0 or debug_counter != 10:
+    while debug_counter < 5 and len(parse_us) != 0:
 
         for link in parse_us:
             data_and_assets = get_content(link)
             assets = [asset for asset in data_and_assets if is_asset(asset)]
             data = [link for link in data_and_assets if not is_asset(link)]
             links = links + data
-            temp_asset_tree = {"url": link, "assets": assets}
-            if len(link_asset_tree) == 0:
-                link_asset_tree = dict(temp_asset_tree)
-            else:
-                link_asset_tree = dict(link_asset_tree.items() + temp_asset_tree.items())
+            temp_asset_tree = collections.OrderedDict({"url": link, "assets": assets})
+            asset_list += [temp_asset_tree]
+            #asset_list = asset_list.append(temp_asset_tree.copy())
+            # if len(link_asset_tree) == 0:
+            #     link_asset_tree = dict(temp_asset_tree)
+            # else:
+            #     items1 = link_asset_tree
+            #     items2 = temp_asset_tree
+            #     asset_list = [items1, items2]
+            #     #link_asset_tree = dict(link_asset_tree.items() + temp_asset_tree.items())
+            #     link_asset_tree = link_asset_tree.update(temp_asset_tree)
 
         #data_and_assets = [get_content(link) for link in parse_us]
         #links = [url for url_list in links for url in url_list]
@@ -109,7 +117,7 @@ def main():
         f.write(str(total_data))
 
     with open('assets.json', 'w') as fp:
-        json.dump(link_asset_tree, fp, sort_keys=True, indent=4)
+        json.dump(asset_list, fp, sort_keys=False, indent=4)
 
 if __name__ == '__main__':
     main()
