@@ -10,6 +10,101 @@ __email__ = "admin@thomasbrereton.com"
 __status__ = "Development"
 
 
+class WebCrawler:
+
+    def __init__(self, url, asset_specification, debug_limit=None):
+        self.url = url
+        self.asset_specification = asset_specification
+        self.asset_json_list = []
+        self.links = [self.url]
+        self.links_to_parse = [self.url]
+        self.soup = None
+        self.page_links = None
+        self.page_assets = None
+        if debug_limit is None:
+            self.debug_limit = -1
+        else:
+             self.debug_limit = debug_limit
+
+    def crawl_url_domain(self):
+        debug_counter = 0
+        new_links_to_parse = []
+
+        # We loop until the length of parse_us is 0 which
+        # means there are no more links left to crawl on the domain
+        while debug_counter != self.debug_limit and len(self.links_to_parse) != 0:
+
+            # For each link (page) in parse_us we get every link and every
+            # asset on that page
+            for page in self.links_to_parse:
+                # We get all the links and assets for page
+                links_and_assets = self.get_content(page)
+
+                # We separate links (data) from assets and append the new links to links_to_parse
+                # assets = [asset for asset in links_and_assets if is_asset(asset, self.asset_specification)]
+                # data = [link for link in links_and_assets if not is_asset(link, self.asset_specification)]
+                new_links_to_parse += self.page_links
+
+                # Append the page and it's associated assets to an ordered dictionary
+                temp_asset_tree = collections.OrderedDict({"url": page, "assets": self.page_assets})
+                self.asset_json_list += [collections.OrderedDict(temp_asset_tree)]
+
+            debug_counter += 1
+
+            # We remove the links already crawled and assign the remaining
+            # links to parse_us
+            self.links_to_parse = [link for link in new_links_to_parse if link not in self.links]
+            self.links += self.links_to_parse
+
+            if len(self.links_to_parse) == 0:
+                print("No more links left!")
+            elif debug_counter == self.debug_limit:
+                print("Debug limit reached!")
+
+
+    def get_content(self, page):
+        """
+        We use a function to get all the links and assets on a url.
+
+        :param url:
+            (string) this is the url we are parsing.
+        :param asset_specification:
+            (list of strings) a list which specifies what is an asset.
+        :return:
+            (list of strings) We return a list containing all the links and assets for the url.
+        """
+        try:
+
+            # We get the response object at the 'url'
+            resp = requests.get(page)
+
+            # We parse the response using the BeautifulSoup library
+            soup = bs.BeautifulSoup(resp.text, 'lxml')
+
+            # We parse the soup for the links
+            self.page_links = parse_links_on_page(page, soup)
+
+            # We parse the soup for the assets
+            self.page_assets = get_assets(page, soup, self.asset_specification)
+
+            # We concatenate the links and assets lists and return it
+            # return links + assets
+
+        # We return an empty list for the handled errors
+        except TypeError as e:
+            print(e)
+            print("Got a TypeError, probably got a None that we tried to iterate over")
+            return []
+        except IndexError as e:
+            print(e)
+            print("No useful links?")
+            return []
+        except AttributeError as e:
+            print(e)
+            print("Likely got None for links")
+            return []
+
+
 def handle_local_links(url, link):
     """
     We use a function to handle local links
@@ -144,103 +239,30 @@ def parse_links_on_page(url, soup):
     return links
 
 
-def get_content(url, asset_specification):
-    """
-    We use a function to get all the links and assets on a url.
-
-    :param url:
-        (string) this is the url we are parsing.
-    :param asset_specification:
-        (list of strings) a list which specifies what is an asset.
-    :return:
-        (list of strings) We return a list containing all the links and assets for the url.
-    """
-    try:
-
-        # We get the response object at the 'url'
-        resp = requests.get(url)
-
-        # We parse the response using the BeautifulSoup library
-        soup = bs.BeautifulSoup(resp.text, 'lxml')
-
-        # We parse the soup for the links
-        links = parse_links_on_page(url, soup)
-
-        # We parse the soup for the assets
-        assets = get_assets(url, soup, asset_specification)
-
-        # We concatenate the links and assets lists and return it
-        return links + assets
-
-    # We return an empty list for the handled errors
-    except TypeError as e:
-        print(e)
-        print("Got a TypeError, probably got a None that we tried to iterate over")
-        return []
-    except IndexError as e:
-        print(e)
-        print("No useful links?")
-        return []
-    except AttributeError as e:
-        print(e)
-        print("Likely got None for links")
-        return []
-
-
 def main():
-    # We define the domain which the web crawler will crall
-    starting_url = "http://thomasbrereton.com/"
+
+    # We define the domain which the web crawler will crawl
+    starting_url = "http://gocardless.com/"
     # We define what is considered an asset
     asset_specification = [".png", ".jpg", ".jpeg", ".js", ".css"]
+    # We define a debug limit so it doesn't traverse the whole domain
+    debug_limit = 1
 
-    # We initialise values
-    parse_us = [starting_url]
-    total_data = parse_us
-    links = []
-    asset_list = []
-    debug_counter = 0
-    debug_limit = 5
+    web_crawler = WebCrawler(starting_url, asset_specification, debug_limit)
 
-    # We loop until the length of parse_us is 0 which
-    # means there are no more links left to crawl on the domain
-    while debug_counter < debug_limit and len(parse_us) != 0:
+    web_crawler.crawl_url_domain()
 
-        # For each link (page) in parse_us we get every link and every
-        # asset on that page
-        for page in parse_us:
-
-            # We get all the links and assets for page
-            links_and_assets = get_content(page, asset_specification)
-
-            # We separate links (data) from assets
-            assets = [asset for asset in links_and_assets if is_asset(asset, asset_specification)]
-            data = [link for link in links_and_assets if not is_asset(link, asset_specification)]
-            links += data
-
-            # Append the page and it's associated assets to an ordered dictionary
-            temp_asset_tree = collections.OrderedDict({"url": page, "assets": assets})
-            asset_list += [collections.OrderedDict(temp_asset_tree)]
-
-        debug_counter += 1
-
-        # We remove the links already crawled and assign the remaining
-        # links to parse_us
-        parse_us = [link for link in links if link not in total_data]
-        total_data += parse_us
-
-        if len(parse_us) == 0:
-            print("No more links left!")
-        elif debug_counter == debug_limit:
-            print("Debug limit reached!")
+    assets_for_json = web_crawler.asset_json_list
+    total_links = web_crawler.links
 
     # We write all the links to the file, 'url.txt'
     with open('url.txt','w') as f:
-        f.write(str(total_data))
+        f.write(str(total_links))
 
     # We write all the urls and their assets to a json file, 'assets.json'
     with open('assets.json', 'w') as fp:
-        json.dump(asset_list, fp, sort_keys=True, indent=4)
-        print(json.dumps(asset_list, sort_keys=True, indent=4))
+        json.dump(assets_for_json, fp, sort_keys=True, indent=4)
+        print(json.dumps(assets_for_json, sort_keys=True, indent=4))
 
 if __name__ == '__main__':
     main()

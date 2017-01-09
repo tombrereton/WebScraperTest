@@ -1,18 +1,37 @@
 [
     {
         "assets": [
-            "assets/ico/favicon.png",
-            "assets/css/bootstrap.css",
-            "assets/css/main.css",
-            "assets/css/font-awesome.min.css",
-            "assets/img/logo.png",
-            "assets/js/jquery.min.js",
-            "assets/js/modernizr.custom.js",
-            "assets/js/classie.js",
-            "assets/js/bootstrap.min.js",
-            "assets/js/smoothscroll.js",
-            "assets/js/main.js"
+            "http://gocardless.com/bundle/main-6abfeebd2e415113715d.css",
+            "http://gocardless.com/images/favicons/apple-touch-icon-57x57.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-114x114.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-72x72.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-144x144.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-60x60.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-120x120.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-76x76.png",
+            "http://gocardless.com/images/favicons/apple-touch-icon-152x152.png",
+            "http://gocardless.com/images/favicons/favicon-196x196.png",
+            "http://gocardless.com/images/favicons/favicon-96x96.png",
+            "http://gocardless.com/images/favicons/favicon-32x32.png",
+            "http://gocardless.com/images/favicons/favicon-16x16.png",
+            "http://gocardless.com/images/favicons/favicon-128.png",
+            "http://gocardless.com/images/logos/pro-logos-colour@2x.png",
+            "http://gocardless.com/images/logos/partner-logos@2x.png",
+            "http://gocardless.com/images/footer/deloitte-technology-2016-winner.png",
+            "http://gocardless.com/images/flags/GB-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/BE-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/BE-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/DE-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/ES-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/EU-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/FR-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/IE-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/NL-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/SE-flag-icon@2x.png",
+            "http://gocardless.com/images/flags/GB-flag-icon@2x.png",
+            "http://gocardless.com//www.googletagmanager.com/gtm.js?id=GTM-PRFKNC",
+            "http://gocardless.com/bundle/main-6abfeebd2e415113715d.js"
         ],
-        "url": "http://thomasbrereton.com/"
+        "url": "http://gocardless.com/"
     }
 ]
