@@ -1,37 +1,132 @@
 [
     {
+        "assets": [],
+        "url": "https://google.com/"
+    },
+    {
+        "assets": [],
+        "url": "https://google.com/preferences?hl=en"
+    },
+    {
+        "assets": [],
+        "url": "https://google.com/advanced_search?hl=en-GB&authuser=0"
+    },
+    {
         "assets": [
-            "http://gocardless.com/bundle/main-6abfeebd2e415113715d.css",
-            "http://gocardless.com/images/favicons/apple-touch-icon-57x57.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-114x114.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-72x72.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-144x144.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-60x60.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-120x120.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-76x76.png",
-            "http://gocardless.com/images/favicons/apple-touch-icon-152x152.png",
-            "http://gocardless.com/images/favicons/favicon-196x196.png",
-            "http://gocardless.com/images/favicons/favicon-96x96.png",
-            "http://gocardless.com/images/favicons/favicon-32x32.png",
-            "http://gocardless.com/images/favicons/favicon-16x16.png",
-            "http://gocardless.com/images/favicons/favicon-128.png",
-            "http://gocardless.com/images/logos/pro-logos-colour@2x.png",
-            "http://gocardless.com/images/logos/partner-logos@2x.png",
-            "http://gocardless.com/images/footer/deloitte-technology-2016-winner.png",
-            "http://gocardless.com/images/flags/GB-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/BE-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/BE-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/DE-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/ES-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/EU-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/FR-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/IE-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/NL-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/SE-flag-icon@2x.png",
-            "http://gocardless.com/images/flags/GB-flag-icon@2x.png",
-            "http://gocardless.com//www.googletagmanager.com/gtm.js?id=GTM-PRFKNC",
-            "http://gocardless.com/bundle/main-6abfeebd2e415113715d.js"
+            "https://google.com/translate/releases/twsfe_20161212_RC00/r/css/desktop_ltr.css",
+            "https://google.com/translate/releases/twsfe_20161212_RC00/r/js/desktop_module_main.js"
         ],
-        "url": "http://gocardless.com/"
+        "url": "https://google.com/language_tools?hl=en-GB&authuser=0"
+    },
+    {
+        "assets": [
+            "css/default.v3.css",
+            "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_116x41dp.png",
+            "images/testimonial/advertiser.jpg",
+            "images/testimonial/publisher.jpg",
+            "https://www.google.com/js/google.js",
+            "https://www.google.com/ads/js/peitho2/peitho2.min.js",
+            "../ads/js/sitemap.min.js",
+            "https://google.com/ads/js/base.js",
+            "https://www.google.com/js/gweb/analytics/doubletrack.js",
+            "https://www.google.com/js/maia.js"
+        ],
+        "url": "https://google.com/intl/en/ads/"
+    },
+    {
+        "assets": [
+            "../services/css/business-solutions.min.css",
+            "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_116x41dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-fab-scroll.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-ui-phone.png",
+            "https://www.google.com/ads/images/icons/icon-fab-video.png",
+            "https://www.google.com/images/icons/material/product/1x/adwords_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/icons/material/product/1x/shopping_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/youtube_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-ui-phone.png",
+            "https://www.google.com/ads/images/icons/icon-fab-video.png",
+            "https://www.google.com/images/branding/product/1x/gmail_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/calendar_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/hangouts_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/drive_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-fab-video.png",
+            "https://www.google.com/images/branding/product/1x/adsense_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/admob_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/gsa_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/images/branding/product/1x/gsa_64dp.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-related.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-arrow-down.png",
+            "https://www.google.com/ads/images/icons/icon-footer-gplus.png",
+            "https://www.google.com/ads/images/icons/icon-footer-blogger.png",
+            "https://www.google.com/ads/images/icons/icon-footer-twitter.png",
+            "https://www.google.com/ads/images/icons/icon-footer-youtube.png",
+            "https://www.google.com/ads/images/icons/icon-footer-help.png",
+            "https://www.gstatic.com/external_hosted/modernizr/v2_8_3/basic.js",
+            "https://www.gstatic.com/external_hosted/picturefill/picturefill.min.js",
+            "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js",
+            "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-animate.min.js",
+            "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-messages.min.js",
+            "https://www.google.com/ads/js/peitho2/peitho2.min.js",
+            "../services/js/business-solutions.min.js"
+        ],
+        "url": "https://google.com/services/"
+    },
+    {
+        "assets": [
+            "default.css",
+            "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_116x41dp.png",
+            "https://www.google.com/js/google.js",
+            "https://ssl.gstatic.com/caja/5678/html-sanitizer-minified.js",
+            "https://www.google.com/js/maia.js"
+        ],
+        "url": "https://google.com/intl/en/about.html"
+    },
+    {
+        "assets": [
+            "https://google.com/policies/css/default.css",
+            "https://google.com/images/branding/googlelogo/1x/googlelogo_color_116x41dp.png",
+            "https://google.com/js/google.js",
+            "https://google.com/policies/js/policies.min.js",
+            "https://google.com/js/maia.js"
+        ],
+        "url": "https://google.com/intl/en/policies/privacy/"
+    },
+    {
+        "assets": [
+            "https://google.com/policies/css/default.css",
+            "https://google.com/images/branding/googlelogo/1x/googlelogo_color_116x41dp.png",
+            "https://google.com/js/google.js",
+            "https://google.com/js/maia.js"
+        ],
+        "url": "https://google.com/intl/en/policies/terms/"
     }
 ]
