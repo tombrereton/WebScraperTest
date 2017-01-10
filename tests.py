@@ -1,8 +1,16 @@
 import unittest
 import web_scraper
 
+"""
+tests.py:
 
-class TestStringMethods(unittest.TestCase):
+Note: These tests may only run in Pycharm
+
+Some unit tests to test the Web Crawler class.
+They test for getting the assets and link from a web page.
+"""
+
+class TestWebCrawler(unittest.TestCase):
 
 
     def test_css_asssets(self):

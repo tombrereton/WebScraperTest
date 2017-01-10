@@ -41,7 +41,6 @@ __status__ = "Development"
 
 
 class WebCrawler:
-
     def __init__(self, url, asset_specification, debug_limit=None):
         """
         :param url:
@@ -81,7 +80,6 @@ class WebCrawler:
             # For each link (page) in parse_us we get every link and every
             # asset on that page
             for page in self.links_to_parse:
-
                 # We get all the links and assets for page
                 self.get_content(page)
 
@@ -140,6 +138,7 @@ class WebCrawler:
         except requests.exceptions.ConnectionError as e:
             print(e)
             print("\nEnsure the url is entered correctly and you are connected to the internet.\n")
+            exit()
 
     def get_assets_on_page(self, soup):
         """
@@ -228,7 +227,7 @@ class WebCrawler:
         """
         We use a function to handle local links
         which start with '/' (i.e. "/about")
-        and append it to the url or '//' and append
+        and append it to the page address or '//' and append
         it to the starting url protocol (i.e. 'https:')
 
         :param page:
@@ -278,20 +277,32 @@ def format_starting_url(url):
 
 
 def main():
+    # COMMAND LINE FUNCTIONS ##
 
     # We use the ArgumentParser library to run it from the command line
     # To see how to run this program change to the same directory as
-    # 'web_scraper.py' and type './web_scraper -h'
+    # 'web_scraper.py' and type './web_scraper -h'.
+
+    # Note: If this is not run from the command line the 'default' values
+    # shown below will be used for the arguments.
     parser = argparse.ArgumentParser()
-    parser.add_argument("-url", type=str, default="https://gocardless.com/",
+    parser.add_argument("-url",
+                        type=str,
+                        default="https://gocardless.com/",
                         help="use this flag to enter a starting url in the format 'http{s}://...'")
-    parser.add_argument("-d", "--debug", type=int, choices=[1, 2, 3], default=-1,
+    parser.add_argument("-d",
+                        "--debug",
+                        type=int,
+                        choices=[1, 2, 3],
+                        default=-1,
                         help="use this flag to debug and limit the pages crawled")
-    parser.add_argument("-a", "--asset_specification", type=str,
+    parser.add_argument("-a",
+                        "--asset_specification",
+                        type=str,
+                        # asset_specification = [".png", ".jpg", ".jpeg", ".js", ".css"]
                         default=".png,.jpg,.jpeg,.js,.css",
                         help="Enter the suffixes which specify an asset delimited by a comma: "
-                             "','\n e.g. .jpg,.js,.css\n"
-                        )
+                             "','\n e.g. .jpg,.js,.css\n")
     args = parser.parse_args()
 
     if args.url:
@@ -302,8 +313,9 @@ def main():
         arg_values = args.asset_specification
         asset_specification = [spec for spec in arg_values.split(",")]
 
-    # We define what is considered an asset
-    # asset_specification = [".png", ".jpg", ".jpeg", ".js", ".css"]
+    # END OF COMMAND LINE FUNCTIONS ##
+
+    # MAIN FUNCTIONS OF WEB CRAWLER ##
 
     # We create a web crawler object
     web_crawler = WebCrawler(starting_url, asset_specification, debug_limit)
@@ -317,14 +329,20 @@ def main():
     # We get the total urls crawled from the web crawler object
     total_links = web_crawler.links
 
+    # END OF MAIN FUNCTIONS ##
+
+    # WRITING TO FILE FUNCTIONS ##
+
     # We write all the links to the file, 'url.txt'
-    with open('url.txt','w') as f:
+    with open('url.txt', 'w') as f:
         f.write(str(total_links))
 
     # We write all the urls and their assets to a json file, 'assets.json'
     with open('assets.json', 'w') as fp:
         json.dump(assets_for_json, fp, sort_keys=True, indent=4)
         print(json.dumps(assets_for_json, sort_keys=True, indent=4))
+
+    # END OF FILE FUNCTIONS ##
 
 if __name__ == '__main__':
     main()
