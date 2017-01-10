@@ -9,7 +9,7 @@ import argparse
 web_scraper.py:
 
 
-usage: web_scraper.py [-h] [-url URL] [-d {1,2,3}]                         
+usage: web_scraper.py [-h] [-url URL] [-d {1,2,3}] [-a ASSET_SPECIFICATION]
 
 optional arguments:
     -h, --help            show this help message and exit
@@ -17,6 +17,9 @@ optional arguments:
                             'http{s}://...'
     -d {1,2,3}, --debug {1,2,3}
                           use this flag to debug and limit the pages crawled
+    -a ASSET_SPECIFICATION, --asset_specification ASSET_SPECIFICATION
+                          Enter the suffixes which specify an asset delimited by
+                            a comma: ',' e.g. .jpg,.js,.css
 
 
 A web crawler program which crawls a specified domain and determines
