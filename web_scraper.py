@@ -8,7 +8,6 @@ import argparse
 """
 web_scraper.py:
 
-
 usage: web_scraper.py [-h] [-url URL] [-d {1,2,3}] [-a ASSET_SPECIFICATION]
 
 optional arguments:
@@ -184,6 +183,8 @@ class WebCrawler:
         # is in the 'asset,' we return True if it does, False
         # if not
         for substring in self.asset_specification:
+            if substring == ".css":
+                substring = substring[1:]
             if substring in asset:
                 return True
 
